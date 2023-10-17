@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.6"
+metadata:
+  name: easi
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://10.8.0.4:8000
+        app:
+          name: ZR_EASI_TYPE3
+          description: EaSI App for Type 3
+          package: ZEASI
+          transport: ND1K900429
+        exclude:
+          - /test/
